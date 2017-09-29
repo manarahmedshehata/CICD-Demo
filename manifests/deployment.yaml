@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: cicd-demo
+  namespace: cicd-test
+  labels:
+    app: cicd-demo
+    env: cicd-test
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: cicd-demo
+        env: cicd-test
+    spec:
+      containers:
+      - name: demo
+        image: deploymentcoe/cicd-demo
+        imagePullPolicy: Always
