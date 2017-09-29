@@ -8,9 +8,9 @@
     <body>          
        <!--  -->
        <h1>Hello world</h1>
-        <h1>Hello Manar</h1>
-        <h1>Hello Yara</h1>
-        <h1>Hello Aya</h1>
-        <h1>Hello Ahmed</h1>
+        <!--<h1>Hello Luke</h1>
+        <h2>Welcome to our CI/CD Pipleline</h2>
+        <h1>Thanks</h1>
+        <h1>Deployment CoE</h1> -->
     </body>
 </html>
