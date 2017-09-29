@@ -40,7 +40,9 @@ pipeline {
 				echo "Deployment"
 				sh """
 					kubectl delete -f ./manifests/deployment.yaml
+					kubectl delete -f ./manifests/ingress.yaml
 					kubectl apply -f ./manifests
+
 					
 				"""
 				//deleteDir()
