@@ -18,3 +18,5 @@ spec:
       - name: demo
         image: deploymentcoe/cicd-demo
         imagePullPolicy: Always
+        ports:
+         - containerPort: 8080
