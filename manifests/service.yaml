@@ -4,6 +4,7 @@ metadata:
   name: cicd-demo
   namespace: cicd-test
 spec:
+  type: NodePort
   selector:
     app: cicd-demo
   ports:

@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: cicd-demo-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: k8s.io
+    http:
+      paths:
+      - backend:
+          serviceName: cicd-demo
+          servicePort: 7070
+        path: /demo/*
