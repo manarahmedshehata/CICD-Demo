@@ -1,4 +1,3 @@
-/* Copyright © 2015 Oracle and/or its affiliates. All rights reserved. */
 package com.example.employees;
 
 import java.util.Optional;
