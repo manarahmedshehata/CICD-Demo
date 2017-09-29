@@ -23,7 +23,7 @@ pipeline {
 				docker login --username $USERNAME --password $PASSWORD
 				docker push deploymentcoe/cicd-demo
 				docker images
-				#docker rmi deploymentcoe/cicd-demo
+				docker rmi deploymentcoe/cicd-demo
 				
 				"""
 				
@@ -36,14 +36,13 @@ pipeline {
         stage('Deployment') {
 			steps {
 				echo "Deployment"
-				/*
 				sh """
-					kubectl delete -f ./manifests/deployment.yaml
+					#kubectl delete -f ./manifests/deployment.yaml
 					kubectl apply -f ./manifests
 					
 				"""
 				deleteDir()
-				*/
+				
         	}
         }
 
