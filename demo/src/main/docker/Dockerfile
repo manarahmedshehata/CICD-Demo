@@ -4,7 +4,7 @@ EXPOSE 8080
 RUN apk update
 RUN apk upgrade
 RUN apk add bash-completion
-RUN adduser -s demo
+RUN adduser -S demo
 RUN su demo
 VOLUME /tmp
 ADD employees-app-1.0-SNAPSHOT-jar-with-dependencies.jar demo-app.jar
