@@ -1,9 +1,6 @@
 FROM openjdk:8u111-jdk-alpine 
 
 EXPOSE 8080
-RUN adduser -D demo
-#RUN adduser demo sudo
-USER demo
 RUN apk update
 RUN apk upgrade
 RUN apk add bash-completion
