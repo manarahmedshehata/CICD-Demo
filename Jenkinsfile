@@ -10,7 +10,7 @@ pipeline {
 				cd ./demo
 				mvn clean package
 			"""
-				mail (to: 'yara.abdellatif1@vodafone.com',
+				mail (to: 'ahmed.said-abdallah2@vodafone.com',
 				      cc: 'manar.hassan1@vodafone.com',
                 		subject: "Jenkins",
                 		body: """
@@ -39,7 +39,7 @@ Deployment coe Team
 				docker rmi deploymentcoe/cicd-demo
 				
 				"""
-				mail (to: 'yara.abdellatif1@vodafone.com',
+				mail (to: 'ahmed.said-abdallah2@vodafone.com',
 				      cc: 'manar.hassan1@vodafone.com',
                 		subject: "Jenkins",
                 		body: """
@@ -69,7 +69,7 @@ Deployment coe Team
 					
 				"""
 				deleteDir()
-				mail (to: 'yara.abdellatif1@vodafone.com',
+				mail (to: 'ahmed.said-abdallah2@vodafone.com',
 				      cc: 'manar.hassan1@vodafone.com',
                 		subject: "Jenkins",
                 		body: """
