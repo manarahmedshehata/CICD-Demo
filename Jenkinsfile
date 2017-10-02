@@ -52,7 +52,7 @@ pipeline {
 	    
 	stage('Email') {
 			steps {
-				mail (to: 'yara.abdellatif1@vodafone.com',
+				mail (to: 'deploymentcoe@vodafone.com',
                 		subject: "Jenkins",
                 		body: "Build is done successfully.");
         	}
