@@ -2,21 +2,31 @@ pipeline {
     agent any
     stages {
         stage('Java Build') {
+		
         	steps {
 			
         		echo "java build"
-        		
+        		/*
 			sh"""
 				cd ./demo
 				mvn clean package
 			"""
-			
+			*/
+				mail (to: 'yara.abdellatif1@vodafone.com',
+				      cc: 'manar.hassan1@vodafone.com',
+                		subject: "Jenkins",
+                		body: """
+					Build is done successfully.
+					thanks
+					Deployment coe Team
+					""");
         	}
         }
-	    
+	   
         stage('docker Build') {
 		steps {
 			echo "docker build"
+			/*
 			withCredentials([usernamePassword(credentialsId: '18b57317-0966-4f4a-9fa8-49f733bc09bd', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
 				sh """
 				cd demo/src/main/docker/
@@ -28,7 +38,7 @@ pipeline {
 				docker rmi deploymentcoe/cicd-demo
 				
 				"""
-				
+			*/	
 			}
 			
 			
@@ -38,6 +48,7 @@ pipeline {
         stage('Deployment') {
 			steps {
 				echo "Deployment"
+			/*
 				sh """
 					kubectl delete -f ./manifests/deployment.yaml
 					#kubectl delete -f ./manifests/ingress.yaml
@@ -46,18 +57,8 @@ pipeline {
 					
 				"""
 				//deleteDir()
-				
+			*/	
         	}
         }
-	    
-	stage('Email') {
-			steps {
-				mail (to: 'ahmed.said-abdallah2@vodafone.com',
-				      cc: 'manar.hassan1@vodafone.com',
-                		subject: "Jenkins",
-                		body: "Build is done successfully.");
-        	}
-        }
-
     }
 }
