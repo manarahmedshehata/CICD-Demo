@@ -24,7 +24,7 @@ Deployment CoE
 					""");
 					*/
 
-emailext attachLog: true, body: 'Java build is done successfully', subject: 'Jenkins notification', to: 'yara.mohamed174@gmail.com', cc: 'manar.hassan1@vodafone.com,yara.abdellatif1@vodafone.com'
+emailext attachLog: true, body: 'Java build is done successfully', subject: 'Jenkins notification', cc: 'manar.hassan1@vodafone.com,yara.abdellatif1@vodafone.com', to: 'yara.mohamed174@gmail.com'
 
         	}
         }
