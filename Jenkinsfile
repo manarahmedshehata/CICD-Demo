@@ -10,19 +10,19 @@ pipeline {
 				cd ./demo
 				mvn clean package
 			"""
-							mail (to: 'yara.abdellatif1@vodafone.com,manar.hassan1@vodafone.com',
-				      cc: 'manar.hassan@vodafone.com',
-                		subject: "Jenkins",
-                		body: """
-Dears,
+// 							mail (to: 'yara.abdellatif1@vodafone.com,manar.hassan1@vodafone.com',
+// 				      cc: 'manar.hassan@vodafone.com',
+//                 		subject: "Jenkins",
+//                 		body: """
+// Dears,
 
-Kindly be informed that code build is done successfully.
+// Kindly be informed that code build is done successfully.
 			
-Thanks
-Deployment CoE
-					""");
+// Thanks
+// Deployment CoE
+// 					""");
 
-//emailext attachLog: true, body: 'Java build is done successfully', subject: 'Jenkins notification' to: 'yara.mohamed174@gmail.com', 'deploymentcoe@gmail.com'
+emailext attachLog: true, body: 'Java build is done successfully', subject: 'Jenkins notification' to: 'yara.mohamed174@gmail.com,deploymentcoe@gmail.com'
         	}
         }
 	   
