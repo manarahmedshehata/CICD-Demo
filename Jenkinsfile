@@ -10,8 +10,8 @@ pipeline {
 				cd ./demo
 				mvn clean package
 			"""
-				mail (to: 'ahmed.said-abdallah2@vodafone.com',
-				      cc: 'manar.hassan1@vodafone.com',
+				mail (to: 'Yousef.sedky1@vodafone.com',
+				      cc: 'Aya.ghaafar1@vodafone.com',
                 		subject: "Jenkins",
                 		body: """
 Dears,
@@ -39,8 +39,8 @@ Deployment CoE
 				docker rmi deploymentcoe/cicd-demo
 				
 				"""
-				mail (to: 'ahmed.said-abdallah2@vodafone.com',
-				      cc: 'manar.hassan1@vodafone.com',
+				mail (to: 'Yousef.sedky1@vodafone.com',
+				      cc: 'Aya.ghaafar1@vodafone.com',
                 		subject: "Jenkins",
                 		body: """
 Dears,
@@ -69,8 +69,8 @@ Deployment CoE
 					
 				"""
 				deleteDir()
-				mail (to: 'ahmed.said-abdallah2@vodafone.com',
-				      cc: 'manar.hassan1@vodafone.com',
+				mail (to: 'Yousef.sedky1@vodafone.com',
+				      cc: 'Aya.ghaafar1@vodafone.com',
                 		subject: "Jenkins",
                 		body: """
 Dears,
