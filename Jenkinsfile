@@ -16,9 +16,12 @@ pipeline {
 				      cc: 'manar.hassan1@vodafone.com',
                 		subject: "Jenkins",
                 		body: """
-					Build is done successfully.
-					thanks
-					Deployment coe Team
+				Hi All
+				Build is done successfully.
+					
+					
+				thanks
+				Deployment coe Team
 					""");
         	}
         }
