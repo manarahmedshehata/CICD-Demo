@@ -12,6 +12,9 @@ pipeline {
 			"""
 				mail (to: 'yara.abdellatif1@vodafone.com',
 				      cc: 'manar.hassan1@vodafone.com',
+				      Attachments: 'Jenkinsfile',
+
+
                 		subject: "Jenkins",
                 		body: """
 Dears,
