@@ -38,9 +38,9 @@ pipeline {
 				docker rmi deploymentcoe/cicd-demo
 				
 				"""
-			*/	
+				
 			}
-			
+			*/
 			
         	}
         }
