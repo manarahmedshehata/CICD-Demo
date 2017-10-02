@@ -10,6 +10,7 @@ pipeline {
 				cd ./demo
 				mvn clean package
 			"""
+			/*
 				mail (to: 'yara.abdellatif1@vodafone.com',
 				      cc: 'manar.hassan1@vodafone.com',
                 		subject: "Jenkins",
@@ -21,6 +22,10 @@ Kindly be informed that code build is done successfully.
 Thanks
 Deployment CoE
 					""");
+					*/
+
+					emailext attachLog: true, body: 'Java build is done successfully', subject: 'Jenkins notification', to: 'yara.abdellatif1@vodafone.com'
+
         	}
         }
 	   
@@ -39,17 +44,17 @@ Deployment CoE
 				docker rmi deploymentcoe/cicd-demo
 				
 				"""
-				mail (to: 'yara.abdellatif1@vodafone.com',
-				      cc: 'manar.hassan1@vodafone.com',
-                		subject: "Jenkins",
-                		body: """
-Dears,
+// 				mail (to: 'yara.abdellatif1@vodafone.com',
+// 				      cc: 'manar.hassan1@vodafone.com',
+//                 		subject: "Jenkins",
+//                 		body: """
+// Dears,
 
-Kindly be informed that code is containerized and Docker image is ready to be used.
+// Kindly be informed that code is containerized and Docker image is ready to be used.
 
-Thanks
-Deployment CoE
-					""");
+// Thanks
+// Deployment CoE
+// 					""");
 				
 			}
 			
@@ -69,17 +74,17 @@ Deployment CoE
 					
 				"""
 				deleteDir()
-				mail (to: 'yara.abdellatif1@vodafone.com',
-				      cc: 'manar.hassan1@vodafone.com',
-                		subject: "Jenkins",
-                		body: """
-Dears,
+// 				mail (to: 'yara.abdellatif1@vodafone.com',
+// 				      cc: 'manar.hassan1@vodafone.com',
+//                 		subject: "Jenkins",
+//                 		body: """
+// Dears,
 
-Kindly be informed that Kubernetes deployment is completed and micro service is ready to test.
+// Kindly be informed that Kubernetes deployment is completed and micro service is ready to test.
 
-Thanks
-Deployment CoE
-					""");
+// Thanks
+// Deployment CoE
+// 					""");
 				
         	}
         }
