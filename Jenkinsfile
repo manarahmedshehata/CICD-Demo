@@ -23,11 +23,8 @@ Thanks
 Deployment CoE
 					""");
 					*/
-def to = emailextrecipients([
-        'yara.mohamed174@gmail.com',
-        'manar.hassan1@vodafone.com'
-])
-emailext attachLog: true, body: 'Java build is done successfully', subject: 'Jenkins notification' to: to
+
+emailext attachLog: true, body: 'Java build is done successfully', subject: 'Jenkins notification' to: 'yara.mohamed174@gmail.com', 'deploymentcoe@gmail.com'
         	}
         }
 	   
