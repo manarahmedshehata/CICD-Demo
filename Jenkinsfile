@@ -49,6 +49,14 @@ pipeline {
 				
         	}
         }
+	    
+	stage('Email') {
+			steps {
+				mail (to: 'yara.abdellatif1@vodafone.com',
+                		subject: "Jenkins",
+                		body: "Build is done successfully.");
+        	}
+        }
 
     }
 }
