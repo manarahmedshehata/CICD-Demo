@@ -14,12 +14,12 @@ pipeline {
 				      cc: 'manar.hassan1@vodafone.com',
                 		subject: "Jenkins",
                 		body: """
-Hi All
-Java Build is done successfully.
-					
-					
-thanks
-Deployment coe Team
+Dears,
+
+Kindly be informed that code build is done successfully.
+			
+Thanks
+Deployment CoE
 					""");
         	}
         }
@@ -43,12 +43,12 @@ Deployment coe Team
 				      cc: 'manar.hassan1@vodafone.com',
                 		subject: "Jenkins",
                 		body: """
-Hi All
-Docker Image is Build successfully.
-					
-					
-thanks
-Deployment coe Team
+Dears,
+
+Kindly be informed that code is containerized and Docker image is ready to be used.
+
+Thanks
+Deployment CoE
 					""");
 				
 			}
@@ -73,12 +73,12 @@ Deployment coe Team
 				      cc: 'manar.hassan1@vodafone.com',
                 		subject: "Jenkins",
                 		body: """
-Hi All
-Deployment is created successfully.
-					
-					
-thanks
-Deployment coe Team
+Dears,
+
+Kindly be informed that Kubernetes deployment is completed and micro service is ready to test.
+
+Thanks
+Deployment CoE
 					""");
 				
         	}
