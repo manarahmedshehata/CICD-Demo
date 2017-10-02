@@ -22,7 +22,14 @@ pipeline {
 // Deployment CoE
 // 					""");
 
-emailext attachLog: true, body: 'Java build is done successfully', subject: 'Jenkins notification', to: 'yara.mohamed174@gmail.com,yara.abdellatif1@vodafone.com'
+emailext attachLog: true, subject: 'Jenkins notification', to: 'manar.hassan1@vodafone.com,yara.abdellatif1@vodafone.com', body: """
+Dears,
+
+Kindly be informed that code build is done successfully.
+			
+Thanks
+Deployment CoE
+"""
         	}
         }
 	   
