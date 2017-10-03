@@ -1,10 +1,18 @@
+def notifyStarted() {
+	// send to Slack
+  slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'")
+ 
+}
+def notifySuccessful() {
+  slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' ")
+ }
 pipeline {
     agent any
     
     stages {
-    	notifyStarted()
+    	
         stage('Java Build') {
-		
+			notifyStarted()
         	steps {
 			
         		echo "java build"
@@ -162,12 +170,5 @@ Deployment CoE
         }
 */
     }
-    def notifyStarted() {
-	// send to Slack
-  slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'")
- 
-}
-def notifySuccessful() {
-  slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' ")
- }
+
 }
