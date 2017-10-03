@@ -78,7 +78,6 @@ pipeline {
 // Deployment CoE
 // """
 //         	}
-        	*/
     	}
 			
 			
@@ -123,7 +122,6 @@ pipeline {
 // Deployment CoE
 // """
 //         	}
-        	*/
     	}
     	
         }
