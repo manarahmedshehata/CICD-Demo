@@ -7,11 +7,11 @@ pipeline {
 			
         	steps {
 				notifyStarted("Java Build","Kindly be informed that job started successfully")
-   //      		echo "java build"
-			// sh"""
-			// 	cd ./demo
-			// 	mvn clean package
-			// """
+        		echo "java build"
+				sh"""
+					cd ./demo
+					mvn clean package
+				"""
 			        	}
 		post
 		{
@@ -28,8 +28,7 @@ pipeline {
         stage('docker Build') {
 		steps {
 			notifyStarted("Docker Build","Kindly be informed that job started successfully")
-			echo "docker build"
-	/*		
+			echo "docker build"	
 			withCredentials([usernamePassword(credentialsId: '18b57317-0966-4f4a-9fa8-49f733bc09bd', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
 				sh """
 				cd demo/src/main/docker/
@@ -42,7 +41,7 @@ pipeline {
 				
 				"""
 			}
-				*/		
+					
 		}
 		post
 		{
@@ -60,16 +59,14 @@ pipeline {
         stage('Deployment') {
 			steps {
 				notifyStarted("Kubernetes Deployment","Kindly be informed that job started successfully")
-				echo "Deployment"
-	/*		
+				echo "Deployment"	
 				sh """
 					kubectl delete -f ./manifests/deployment.yaml
 					#kubectl delete -f ./manifests/ingress.yaml
 					kubectl apply -f ./manifests
 
 					
-				 """
-				         	*/		
+				 """	
         	}
 
         	post
