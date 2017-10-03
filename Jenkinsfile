@@ -120,7 +120,7 @@ Deployment CoE
 					""");
 			}
         failure{
-            	emailext attachLog: true, subject: 'Jenkins job failed', to: 'manar.hassan1@vodafone.com,yara.abdellatif1@vodafone.com', body: """
+            	emailext attachLog: true, subject: 'Jenkins job failed', to: 'manar.hassan1@vodafone.com,yara.abdellatif1@vodafone.com,Ahmed.Said-AbdAllah2@vodafone.com', body: """
 Dears,
 
 Kindly be informed that the job has failed, please find the logs attached to this email.
