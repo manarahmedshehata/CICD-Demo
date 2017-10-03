@@ -7,10 +7,10 @@
 
     <body>          
        <!--  -->
-       <h1>Hi world</h1>
-        <!--<h1>Hello Luke</h1>
+       <!-- <h1>Hi world</h1> -->
+        <h1>Hello Luke</h1>
         <h2>Welcome to our CI/CD Pipleline</h2>
         <h1>Thanks</h1>
-        <h1>Deployment CoE</h1> -->
+        <h1>Deployment CoE</h1> 
     </body>
 </html>
