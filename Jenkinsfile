@@ -7,7 +7,6 @@ pipeline {
 			
         	steps {
 				notifyStarted("Java Build","Kindly be informed that job started successfully")
-				sh'cd nothing'
    //      		echo "java build"
 			// sh"""
 			// 	cd ./demo
@@ -50,8 +49,9 @@ pipeline {
 		success{
 			notifySuccessful("Docker Build","Kindly be informed that code is containerized and Docker image is ready to be use")
 			}
-//         failure{
-//         	}
+        failure{
+        	notifyFailed("Docker Build")
+        	 }
     	}
 			
 			
@@ -77,8 +77,9 @@ pipeline {
 			success{
 				notifySuccessful("Kubernetes Deployment","Kindly be informed that Kubernetes deployment is completed and micro service is ready to test")
 			}
-//         failure{
-//         	}
+        failure{
+        	notifyFailed("Kubernetes Deployment")
+        	 }
     	}
     	
         }
