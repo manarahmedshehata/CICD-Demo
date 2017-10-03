@@ -1,10 +1,29 @@
-def notifyStarted(buildname) {
+def notifyStarted(stagename,mailbody) {
 	// send to Slack
-  slackSend (color: '#FFFF00', message: "STARTED: Job $buildname '[${env.BUILD_NUMBER}]'")
- 
+  slackSend (color: '#FFFF00', message: "STARTED: Job $stagename '[${env.BUILD_NUMBER}]'")
+  mail (to: 'yara.mohamed174@gmail.com',
+                		subject: "Jenkins Job ${env.JOB_NAME} $stagename [${env.BUILD_NUMBER}] success",
+                		body: """
+Dears,
+
+$mailbody .
+			
+Thanks
+Deployment CoE
+					"""); 
 }
-def notifySuccessful() {
+def notifySuccessful(stagename,mailbody) {
   slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' ")
+  mail (to: 'yara.mohamed174@gmail.com',
+                		subject: "Jenkins Job ${env.JOB_NAME} $stagename [${env.BUILD_NUMBER}] success",
+                		body: """
+Dears,
+
+$mailbody .
+			
+Thanks
+Deployment CoE
+					""");
  }
 
 
@@ -20,7 +39,7 @@ pipeline {
         stage('Java Build') {
 			
         	steps {
-				notifyStarted("Java Build")
+				notifyStarted("Java Build","Kindly be informed that job started successfully")
 			
    //      		echo "java build"
 			// sh"""
@@ -28,12 +47,12 @@ pipeline {
 			// 	mvn clean package
 			// """
 			        	}
-// 		post
-// 		{
-// 		success{
-// 			notifySuccessful()
+		post
+		{
+		success{
+			notifySuccessful("Java Build","Kindly be informed that code build is done successfully")
 // 				mail (to: 'yara.abdellatif1@vodafone.com,manar.hassan1@vodafone.com,Ahmed.Said-AbdAllah2@vodafone.com',
-//                 		subject: "Jenkins JOb Java build success",
+//                 		subject: "Jenkins Job Java build success",
 //                 		body: """
 // Dears,
 
@@ -42,7 +61,7 @@ pipeline {
 // Thanks
 // Deployment CoE
 // 					""");
-// 			}
+ 			}
 //         failure{
 //             	emailext attachLog: true, subject: 'Jenkins job Java build failed', to: 'manar.hassan1@vodafone.com,yara.abdellatif1@vodafone.com,Ahmed.Said-AbdAllah2@vodafone.com', body: """
 // Dears,
@@ -52,8 +71,8 @@ pipeline {
 // Thanks
 // Deployment CoE
 // """
-//         	}
-//     	}
+        	// }
+    	}
 
         }
 	   
