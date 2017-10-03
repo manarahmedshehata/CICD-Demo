@@ -104,8 +104,7 @@ Deployment CoE
 				cd nothing
 				
         	}
-        }
-           		post
+        	           		post
 		{
 		success{
 				mail (to: 'yara.abdellatif1@vodafone.com,manar.hassan1@vodafone.com',
@@ -130,5 +129,7 @@ Deployment CoE
 """
         	}
     	}
+        }
+
     }
 }
