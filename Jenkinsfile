@@ -124,7 +124,7 @@ Deployment CoE
         	}
     	}
         }
-
+/*
     	stage('Failed Job') {
 			steps {
 
@@ -157,6 +157,6 @@ Deployment CoE
         	}
     	}
         }
-
+*/
     }
 }
