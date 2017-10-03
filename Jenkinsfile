@@ -1,6 +1,6 @@
-def notifyStarted() {
+def notifyStarted(buildname) {
 	// send to Slack
-  slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'")
+  slackSend (color: '#FFFF00', message: "STARTED: Job $buildname '[${env.BUILD_NUMBER}]'")
  
 }
 def notifySuccessful() {
@@ -14,46 +14,47 @@ pipeline {
         stage('Java Build') {
 			
         	steps {
-				notifyStarted()
-        		echo "java build"
-			sh"""
-				cd ./demo
-				mvn clean package
-			"""
+				notifyStarted("Java Build")
+			
+   //      		echo "java build"
+			// sh"""
+			// 	cd ./demo
+			// 	mvn clean package
+			// """
 			        	}
-		post
-		{
-		success{
-			notifySuccessful()
-				mail (to: 'yara.abdellatif1@vodafone.com,manar.hassan1@vodafone.com,Ahmed.Said-AbdAllah2@vodafone.com',
-                		subject: "Jenkins JOb Java build success",
-                		body: """
-Dears,
+// 		post
+// 		{
+// 		success{
+// 			notifySuccessful()
+// 				mail (to: 'yara.abdellatif1@vodafone.com,manar.hassan1@vodafone.com,Ahmed.Said-AbdAllah2@vodafone.com',
+//                 		subject: "Jenkins JOb Java build success",
+//                 		body: """
+// Dears,
 
-Kindly be informed that code build is done successfully.
+// Kindly be informed that code build is done successfully.
 			
-Thanks
-Deployment CoE
-					""");
-			}
-        failure{
-            	emailext attachLog: true, subject: 'Jenkins job Java build failed', to: 'manar.hassan1@vodafone.com,yara.abdellatif1@vodafone.com,Ahmed.Said-AbdAllah2@vodafone.com', body: """
-Dears,
+// Thanks
+// Deployment CoE
+// 					""");
+// 			}
+//         failure{
+//             	emailext attachLog: true, subject: 'Jenkins job Java build failed', to: 'manar.hassan1@vodafone.com,yara.abdellatif1@vodafone.com,Ahmed.Said-AbdAllah2@vodafone.com', body: """
+// Dears,
 
-Kindly be informed that the job java build has failed, please find the logs attached to this email.
+// Kindly be informed that the job java build has failed, please find the logs attached to this email.
 			
-Thanks
-Deployment CoE
-"""
-        	}
-    	}
+// Thanks
+// Deployment CoE
+// """
+//         	}
+//     	}
 
         }
 	   
         stage('docker Build') {
 		steps {
 			echo "docker build"
-			
+	/*		
 			withCredentials([usernamePassword(credentialsId: '18b57317-0966-4f4a-9fa8-49f733bc09bd', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
 				sh """
 				cd demo/src/main/docker/
@@ -93,14 +94,14 @@ Deployment CoE
 """
         	}
     	}
-			
+	*/		
 			
         	}
 
         stage('Deployment') {
 			steps {
 				echo "Deployment"
-			
+	/*		
 				sh """
 					kubectl delete -f ./manifests/deployment.yaml
 					#kubectl delete -f ./manifests/ingress.yaml
@@ -134,6 +135,7 @@ Deployment CoE
 """
         	}
     	}
+    	*/
         }
 /*
     	stage('Failed Job') {
