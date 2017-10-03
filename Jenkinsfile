@@ -27,9 +27,6 @@ Deployment CoE
  }
 
 
-def notifyFailed() {
-  slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-}
 
 pipeline {
     agent any
@@ -40,7 +37,7 @@ pipeline {
 			
         	steps {
 				notifyStarted("Java Build","Kindly be informed that job started successfully")
-			
+				cd fvbj
    //      		echo "java build"
 			// sh"""
 			// 	cd ./demo
@@ -62,7 +59,8 @@ pipeline {
 // Deployment CoE
 // 					""");
  			}
-//         failure{
+        failure{
+        	notifyFailed("Java Build")
 //             	emailext attachLog: true, subject: 'Jenkins job Java build failed', to: 'manar.hassan1@vodafone.com,yara.abdellatif1@vodafone.com,Ahmed.Said-AbdAllah2@vodafone.com', body: """
 // Dears,
 
@@ -71,7 +69,7 @@ pipeline {
 // Thanks
 // Deployment CoE
 // """
-        	// }
+        	 }
     	}
 
         }
@@ -200,4 +198,7 @@ Deployment CoE
 */
     }
 
+}
+def notifyFailed(stagename) {
+  slackSend (color: '#FF0000', message: "FAILED: Job stagename' [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
 }
