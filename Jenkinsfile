@@ -10,8 +10,9 @@ pipeline {
 			// 	cd ./demo
 			// 	mvn clean package
 			// """
-		post {
-			success{
+			        	}
+		postsuccess{
+			 {
 				echo 'success'
 			}
         	failure{
@@ -38,7 +39,6 @@ pipeline {
 // Thanks
 // Deployment CoE
 // """
-        	}
         }
 	   
         stage('docker Build') {
