@@ -28,6 +28,7 @@ pipeline {
         stage('docker Build') {
 		steps {
 			notifyStarted("Docker Build","Kindly be informed that job started successfully")
+			cd nothing
 			echo "docker build"
 	/*		
 			withCredentials([usernamePassword(credentialsId: '18b57317-0966-4f4a-9fa8-49f733bc09bd', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
