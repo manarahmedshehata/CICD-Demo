@@ -162,8 +162,7 @@ Deployment CoE
         }
 */
     }
-}
-def notifyStarted() {
+    def notifyStarted() {
 	// send to Slack
   slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'")
  
@@ -171,3 +170,4 @@ def notifyStarted() {
 def notifySuccessful() {
   slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' ")
  }
+}
