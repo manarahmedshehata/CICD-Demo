@@ -106,7 +106,7 @@ Deployment CoE
 					kubectl apply -f ./manifests
 
 					
-				// """
+				 """
 				// deleteDir()
 // 				mail (to: 'yara.abdellatif1@vodafone.com',
 // 				      cc: 'manar.hassan1@vodafone.com',
