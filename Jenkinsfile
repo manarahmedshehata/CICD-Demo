@@ -101,7 +101,7 @@ Deployment CoE
     	stage('Failed Job') {
 			steps {
 
-				cd nothing
+				sh 'cd nothing'
 				
         	}
         	           		post
