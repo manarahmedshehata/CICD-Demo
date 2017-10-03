@@ -12,9 +12,9 @@ pipeline {
     stages {
     	
         stage('Java Build') {
-			notifyStarted()
-        	steps {
 			
+        	steps {
+				notifyStarted()
         		echo "java build"
 			sh"""
 				cd ./demo
