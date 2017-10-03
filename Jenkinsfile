@@ -91,7 +91,6 @@ def notifyStarted(stagename,mailbody) {
   // send to Slack
   slackSend (color: '#FFFF00', message: "STARTED: Job $stagename '[${env.BUILD_NUMBER}]'")
   // send mail
-  /*
   mail (to: 'yara.abdellatif1@vodafone.com,manar.hassan1@vodafone.com,ahmed.said-abdallah2@vodafone.com',
                 		subject: "Jenkins Job ${env.JOB_NAME} $stagename [${env.BUILD_NUMBER}] success",
                 		body: """
@@ -102,14 +101,12 @@ $mailbody .
 Thanks
 Deployment CoE
 					"""); 
-*/
 }
 
 def notifySuccessful(stagename,mailbody) {
   // send to Slack
   slackSend (color: '#00FF00', message: "SUCCESSFUL: Job $stagename '[${env.BUILD_NUMBER}]' ")
   // send mail
-  /*
   mail (to: 'yara.abdellatif1@vodafone.com,manar.hassan1@vodafone.com,ahmed.said-abdallah2@vodafone.com',
                 		subject: "Jenkins Job ${env.JOB_NAME} $stagename [${env.BUILD_NUMBER}] success",
                 		body: """
@@ -120,14 +117,12 @@ $mailbody .
 Thanks
 Deployment CoE
 					""");
- */
  }
 
 def notifyFailed(stagename) {
   // send to Slack
   slackSend (color: '#FF0000', message: "FAILED: Job $stagename' [${env.BUILD_NUMBER}]'")
   // send mail
-  /*
   emailext attachLog: true, subject: "Jenkins Job ${env.JOB_NAME} $stagename [${env.BUILD_NUMBER}] failed", to: 'yara.abdellatif1@vodafone.com,manar.hassan1@vodafone.com,ahmed.said-abdallah2@vodafone.com', body: """
 Dears,
 
@@ -136,5 +131,4 @@ Kindly be informed that the job $stagename has failed, please find the logs atta
 Thanks
 Deployment CoE
 """
-*/
 }
