@@ -98,7 +98,7 @@ def mailRecipients = 'yara.mohamed174@gmail.com'
 def notifyStarted(stagename,mailbody) {
 	// send to Slack
   slackSend (color: '#FFFF00', message: "STARTED: Job $stagename '[${env.BUILD_NUMBER}]'")
-  mail (to: ${mailRecipients} ,
+  mail (to: "$mailRecipients" ,
                 		subject: "Jenkins Job ${env.JOB_NAME} $stagename [${env.BUILD_NUMBER}] success",
                 		body: """
 Dears,
