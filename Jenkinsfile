@@ -91,14 +91,17 @@ pipeline {
 
 //variables
 
-@Field def MAILRECIPIENTS = 'yara.mohamed174@gmail.com'
+ environment {
+    MAILRECIPIENTS = 'yara.mohamed174@gmail.com'
+}
+
 
 //functions
 
 def notifyStarted(stagename,mailbody) {
 	// send to Slack
   slackSend (color: '#FFFF00', message: "STARTED: Job $stagename '[${env.BUILD_NUMBER}]'")
-  mail (to: MAILRECIPIENTS ,
+  mail (to: ${env.MAILRECIPIENTS},
                 		subject: "Jenkins Job ${env.JOB_NAME} $stagename [${env.BUILD_NUMBER}] success",
                 		body: """
 Dears,
@@ -112,7 +115,7 @@ Deployment CoE
 
 def notifySuccessful(stagename,mailbody) {
   slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' ")
-  mail (to: MAILRECIPIENTS ,
+  mail (to: ${env.MAILRECIPIENTS},
                 		subject: "Jenkins Job ${env.JOB_NAME} $stagename [${env.BUILD_NUMBER}] success",
                 		body: """
 Dears,
