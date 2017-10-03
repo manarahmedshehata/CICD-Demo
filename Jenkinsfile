@@ -67,6 +67,31 @@ Deployment CoE
 // 					""");
 				
 			}
+		post
+		{
+		success{
+				mail (to: 'yara.abdellatif1@vodafone.com,manar.hassan1@vodafone.com',
+                		subject: "Jenkins Job Docker",
+                		body: """
+Dears,
+
+Kindly be informed that code is containerized and Docker image is ready to be used.
+			
+Thanks
+Deployment CoE
+					""");
+			}
+        failure{
+            	emailext attachLog: true, subject: 'Jenkins job failed', to: 'manar.hassan1@vodafone.com,yara.abdellatif1@vodafone.com', body: """
+Dears,
+
+Kindly be informed that the job docker build has failed, please find the logs attached to this email.
+			
+Thanks
+Deployment CoE
+"""
+        	}
+    	}
 			
 			
         	}
@@ -75,10 +100,10 @@ Deployment CoE
 			steps {
 				echo "Deployment"
 			
-				// sh """
-				// 	kubectl delete -f ./manifests/deployment.yaml
-				// 	#kubectl delete -f ./manifests/ingress.yaml
-				// 	kubectl apply -f ./manifests
+				sh """
+					kubectl delete -f ./manifests/deployment.yaml
+					#kubectl delete -f ./manifests/ingress.yaml
+					kubectl apply -f ./manifests
 
 					
 				// """
@@ -96,6 +121,31 @@ Deployment CoE
 // 					""");
 				
         	}
+        post
+		{
+		success{
+				mail (to: 'yara.abdellatif1@vodafone.com,manar.hassan1@vodafone.com',
+                		subject: "Jenkins Job Deployment success",
+                		body: """
+Dears,
+
+Kindly be informed that code is containerized and Docker image is ready to be used.
+			
+Thanks 
+Deployment CoE
+					""");
+			}
+        failure{
+            	emailext attachLog: true, subject: 'Jenkins job Kubernetes deployment failed', to: 'manar.hassan1@vodafone.com,yara.abdellatif1@vodafone.com', body: """
+Dears,
+
+Kindly be informed that the job docker build has failed, please find the logs attached to this email.
+			
+Thanks
+Deployment CoE
+"""
+        	}
+    	}
         }
 
     	stage('Failed Job') {
@@ -104,7 +154,7 @@ Deployment CoE
 				sh 'cd nothing'
 				
         	}
-        	           		post
+        post
 		{
 		success{
 				mail (to: 'yara.abdellatif1@vodafone.com,manar.hassan1@vodafone.com',
@@ -112,14 +162,14 @@ Deployment CoE
                 		body: """
 Dears,
 
-Kindly be informed that the jjob is successful.
+Kindly be informed that the job is successful.
 			
 Thanks
 Deployment CoE
 					""");
 			}
         failure{
-            	emailext attachLog: true, subject: 'Jenkins job failed', to: 'manar.hassan1@vodafone.com,yara.abdellatif1@vodafone.com,Ahmed.Said-AbdAllah2@vodafone.com', body: """
+            	emailext attachLog: true, subject: 'Jenkins job failed test', to: 'manar.hassan1@vodafone.com,yara.abdellatif1@vodafone.com,Ahmed.Said-AbdAllah2@vodafone.com', body: """
 Dears,
 
 Kindly be informed that the job has failed, please find the logs attached to this email.
