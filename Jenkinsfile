@@ -11,8 +11,9 @@ pipeline {
 			// 	mvn clean package
 			// """
 			        	}
-		postsuccess{
-			 {
+		post
+		{
+		success{
 				echo 'success'
 			}
         	failure{
