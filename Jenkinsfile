@@ -101,7 +101,7 @@ pipeline {
 def notifyStarted(stagename,mailbody) {
 	// send to Slack
   slackSend (color: '#FFFF00', message: "STARTED: Job $stagename '[${env.BUILD_NUMBER}]'")
-  mail (to: ${env.MAILRECIPIENTS},
+  mail (to: 'yara.mohamed174@gmail.com',
                 		subject: "Jenkins Job ${env.JOB_NAME} $stagename [${env.BUILD_NUMBER}] success",
                 		body: """
 Dears,
@@ -115,7 +115,7 @@ Deployment CoE
 
 def notifySuccessful(stagename,mailbody) {
   slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' ")
-  mail (to: ${env.MAILRECIPIENTS},
+  mail (to: 'yara.mohamed174@gmail.com',
                 		subject: "Jenkins Job ${env.JOB_NAME} $stagename [${env.BUILD_NUMBER}] success",
                 		body: """
 Dears,
@@ -129,7 +129,7 @@ Deployment CoE
 
 def notifyFailed(stagename) {
   slackSend (color: '#FF0000', message: "FAILED: Job $stagename' [${env.BUILD_NUMBER}]'")
-  emailext attachLog: true, subject: "Jenkins Job ${env.JOB_NAME} $stagename [${env.BUILD_NUMBER}] failed", to: 'yara.mohamed174@gmail.com', body: """
+  emailext attachLog: true, subject: "Jenkins Job ${env.JOB_NAME} $stagename [${env.BUILD_NUMBER}] failed", to: ${env.MAILRECIPIENTS}, body: """
 Dears,
 
 Kindly be informed that the job $stagename has failed, please find the logs attached to this email.
