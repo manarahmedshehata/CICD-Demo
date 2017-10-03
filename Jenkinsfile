@@ -1,5 +1,6 @@
 pipeline {
     agent any
+    notifyStarted()
     stages {
         stage('Java Build') {
 		
@@ -14,6 +15,7 @@ pipeline {
 		post
 		{
 		success{
+			notifySuccessful()
 				mail (to: 'yara.abdellatif1@vodafone.com,manar.hassan1@vodafone.com,Ahmed.Said-AbdAllah2@vodafone.com',
                 		subject: "Jenkins JOb Java build success",
                 		body: """
@@ -160,3 +162,11 @@ Deployment CoE
 */
     }
 }
+def notifyStarted() {
+	// send to Slack
+  slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'")
+ 
+}
+def notifySuccessful() {
+  slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' ")
+ }
