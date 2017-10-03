@@ -200,5 +200,5 @@ Deployment CoE
 
 }
 def notifyFailed(stagename) {
-  slackSend (color: '#FF0000', message: "FAILED: Job stagename' [${env.BUILD_NUMBER}]'")
+  slackSend (color: '#FF0000', message: "FAILED: Job $stagename' [${env.BUILD_NUMBER}]'")
 }
