@@ -28,7 +28,6 @@ pipeline {
         stage('docker Build') {
 		steps {
 			notifyStarted("Docker Build","Kindly be informed that job started successfully")
-			cd nothing
 			echo "docker build"
 	/*		
 			withCredentials([usernamePassword(credentialsId: '18b57317-0966-4f4a-9fa8-49f733bc09bd', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
@@ -62,6 +61,7 @@ pipeline {
 			steps {
 				notifyStarted("Kubernetes Deployment","Kindly be informed that job started successfully")
 				echo "Deployment"
+				cd nothing
 	/*		
 				sh """
 					kubectl delete -f ./manifests/deployment.yaml
@@ -122,7 +122,7 @@ Deployment CoE
 
 def notifyFailed(stagename) {
   slackSend (color: '#FF0000', message: "FAILED: Job $stagename' [${env.BUILD_NUMBER}]'")
-  emailext attachLog: true, subject: "Jenkins job ${env.JOB_NAME} $stagename [${env.BUILD_NUMBER}] failed", to: 'yara.mohamed174@gmail.com', body: """
+  emailext attachLog: true, subject: "Jenkins Job ${env.JOB_NAME} $stagename [${env.BUILD_NUMBER}] failed", to: 'yara.mohamed174@gmail.com', body: """
 Dears,
 
 Kindly be informed that the job $stagename has failed, please find the logs attached to this email.
