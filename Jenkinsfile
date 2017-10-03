@@ -120,7 +120,7 @@ Deployment CoE
 
 def notifyFailed(stagename) {
   slackSend (color: '#FF0000', message: "FAILED: Job $stagename' [${env.BUILD_NUMBER}]'")
-  emailext attachLog: true, subject: 'Jenkins job ${env.JOB_NAME} $stagename [${env.BUILD_NUMBER}] failed', to: 'yara.mohamed174@gmail.com', body: """
+  emailext attachLog: true, subject: "Jenkins job ${env.JOB_NAME} $stagename [${env.BUILD_NUMBER}] failed", to: 'yara.mohamed174@gmail.com', body: """
 Dears,
 
 Kindly be informed that the job $stagename has failed, please find the logs attached to this email.
