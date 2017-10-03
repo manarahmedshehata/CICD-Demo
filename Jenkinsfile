@@ -14,32 +14,29 @@ pipeline {
 		post
 		{
 		success{
-				echo 'success'
+				mail (to: 'yara.abdellatif1@vodafone.com,manar.hassan1@vodafone.com',
+                		subject: "Jenkins",
+                		body: """
+Dears,
+
+Kindly be informed that code build is done successfully.
+			
+Thanks
+Deployment CoE
+					""");
 			}
-        	failure{
-            	echo 'fail'
+        failure{
+            	emailext attachLog: true, subject: 'Jenkins job failed', to: 'manar.hassan1@vodafone.com,yara.abdellatif1@vodafone.com', body: """
+Dears,
+
+Kindly be informed that the job java build has failed, please find the logs attached to this email.
+			
+Thanks
+Deployment CoE
+"""
         	}
     	}
-// 							mail (to: 'yara.abdellatif1@vodafone.com,manar.hassan1@vodafone.com',
-// 				      cc: 'manar.hassan@vodafone.com',
-//                 		subject: "Jenkins",
-//                 		body: """
-// Dears,
 
-// Kindly be informed that code build is done successfully.
-			
-// Thanks
-// Deployment CoE
-// 					""");
-
-// emailext attachLog: true, subject: 'Jenkins notification', to: 'manar.hassan1@vodafone.com,yara.abdellatif1@vodafone.com', body: """
-// Dears,
-
-// Kindly be informed that code build is done successfully.
-			
-// Thanks
-// Deployment CoE
-// """
         }
 	   
         stage('docker Build') {
@@ -101,12 +98,37 @@ pipeline {
         	}
         }
 
-   //  	stage('Failed Job') {
-			// steps {
+    	stage('Failed Job') {
+			steps {
 
-			// 	cd nothing
+				cd nothing
 				
-   //      	}
-   //      }
+        	}
+        }
+   		post
+		{
+		success{
+				mail (to: 'yara.abdellatif1@vodafone.com,manar.hassan1@vodafone.com',
+                		subject: "Jenkins",
+                		body: """
+Dears,
+
+Kindly be informed that the jjob is successful.
+			
+Thanks
+Deployment CoE
+					""");
+			}
+        failure{
+            	emailext attachLog: true, subject: 'Jenkins job failed', to: 'manar.hassan1@vodafone.com,yara.abdellatif1@vodafone.com', body: """
+Dears,
+
+Kindly be informed that the job has failed, please find the logs attached to this email.
+			
+Thanks
+Deployment CoE
+"""
+        	}
+    	}
     }
 }
