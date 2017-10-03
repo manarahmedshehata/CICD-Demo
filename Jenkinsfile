@@ -61,7 +61,6 @@ pipeline {
 			steps {
 				notifyStarted("Kubernetes Deployment","Kindly be informed that job started successfully")
 				echo "Deployment"
-				cd nothing
 	/*		
 				sh """
 					kubectl delete -f ./manifests/deployment.yaml
@@ -89,19 +88,12 @@ pipeline {
 }
 
 
-//variables
-
- environment {
-    MAILRECIPIENTS = 'yara.mohamed174@gmail.com'
-}
-
-
 //functions
 
 def notifyStarted(stagename,mailbody) {
 	// send to Slack
   slackSend (color: '#FFFF00', message: "STARTED: Job $stagename '[${env.BUILD_NUMBER}]'")
-  mail (to: 'yara.mohamed174@gmail.com',
+  mail (to: 'yara.abdellatif1@vodafone.com,manar.hassan1@vodafone.com,ahmed.said-abdallah2@vodafone.com',
                 		subject: "Jenkins Job ${env.JOB_NAME} $stagename [${env.BUILD_NUMBER}] success",
                 		body: """
 Dears,
@@ -115,7 +107,7 @@ Deployment CoE
 
 def notifySuccessful(stagename,mailbody) {
   slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' ")
-  mail (to: 'yara.mohamed174@gmail.com',
+  mail (to: 'yara.abdellatif1@vodafone.com,manar.hassan1@vodafone.com,ahmed.said-abdallah2@vodafone.com',
                 		subject: "Jenkins Job ${env.JOB_NAME} $stagename [${env.BUILD_NUMBER}] success",
                 		body: """
 Dears,
@@ -129,7 +121,7 @@ Deployment CoE
 
 def notifyFailed(stagename) {
   slackSend (color: '#FF0000', message: "FAILED: Job $stagename' [${env.BUILD_NUMBER}]'")
-  emailext attachLog: true, subject: "Jenkins Job ${env.JOB_NAME} $stagename [${env.BUILD_NUMBER}] failed", to: ${env.MAILRECIPIENTS}, body: """
+  emailext attachLog: true, subject: "Jenkins Job ${env.JOB_NAME} $stagename [${env.BUILD_NUMBER}] failed", to: 'yara.abdellatif1@vodafone.com,manar.hassan1@vodafone.com,ahmed.said-abdallah2@vodafone.com', body: """
 Dears,
 
 Kindly be informed that the job $stagename has failed, please find the logs attached to this email.
