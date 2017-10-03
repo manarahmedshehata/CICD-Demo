@@ -91,7 +91,7 @@ pipeline {
 
 //variables
 
-MAILRECIPIENTS = 'yara.mohamed174@gmail.com'
+@Field def MAILRECIPIENTS = 'yara.mohamed174@gmail.com'
 
 //functions
 
