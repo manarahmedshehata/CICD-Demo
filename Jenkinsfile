@@ -105,7 +105,7 @@ Deployment CoE
 				
         	}
         }
-   		post
+           		post
 		{
 		success{
 				mail (to: 'yara.abdellatif1@vodafone.com,manar.hassan1@vodafone.com',
