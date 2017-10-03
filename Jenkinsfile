@@ -72,6 +72,7 @@ pipeline {
 	   
         stage('docker Build') {
 		steps {
+			notifyStarted("Docker Build","Kindly be informed that job started successfully")
 			echo "docker build"
 	/*		
 			withCredentials([usernamePassword(credentialsId: '18b57317-0966-4f4a-9fa8-49f733bc09bd', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
@@ -88,30 +89,32 @@ pipeline {
 			}
 				
 		}
+		*/
 		post
 		{
 		success{
-				mail (to: 'yara.abdellatif1@vodafone.com,manar.hassan1@vodafone.com,Ahmed.Said-AbdAllah2@vodafone.com',
-                		subject: "Jenkins Job Docker success",
-                		body: """
-Dears,
+			notifySuccessful("Docker Build","Kindly be informed that code is containerized and Docker image is ready to be use")
+// 				mail (to: 'yara.abdellatif1@vodafone.com,manar.hassan1@vodafone.com,Ahmed.Said-AbdAllah2@vodafone.com',
+//                 		subject: "Jenkins Job Docker success",
+//                 		body: """
+// Dears,
 
-Kindly be informed that code is containerized and Docker image is ready to be used.
+// Kindly be informed that code is containerized and Docker image is ready to be used.
 			
-Thanks
-Deployment CoE
-					""");
+// Thanks
+// Deployment CoE
+// 					""");
 			}
-        failure{
-            	emailext attachLog: true, subject: 'Jenkins Job Docker build failed', to: 'manar.hassan1@vodafone.com,yara.abdellatif1@vodafone.com,Ahmed.Said-AbdAllah2@vodafone.com', body: """
-Dears,
+//         failure{
+//             	emailext attachLog: true, subject: 'Jenkins Job Docker build failed', to: 'manar.hassan1@vodafone.com,yara.abdellatif1@vodafone.com,Ahmed.Said-AbdAllah2@vodafone.com', body: """
+// Dears,
 
-Kindly be informed that the job docker build has failed, please find the logs attached to this email.
+// Kindly be informed that the job docker build has failed, please find the logs attached to this email.
 			
-Thanks
-Deployment CoE
-"""
-        	}
+// Thanks
+// Deployment CoE
+// """
+//         	}
         	*/
     	}
 			
@@ -120,6 +123,7 @@ Deployment CoE
 
         stage('Deployment') {
 			steps {
+				notifyStarted("Kubernetes Deployment","Kindly be informed that job started successfully")
 				echo "Deployment"
 	/*		
 				sh """
@@ -130,30 +134,32 @@ Deployment CoE
 					
 				 """		
         	}
+        	*/
         	post
 			{
 			success{
-				mail (to: 'yara.abdellatif1@vodafone.com,manar.hassan1@vodafone.com,Ahmed.Said-AbdAllah2@vodafone.com',
-                		subject: "Jenkins Job Deployment success",
-                		body: """
-Dears,
+				notifySuccessful("Kubernetes Deployment","Kindly be informed that Kubernetes deployment is completed and micro service is ready to test")
+// 				mail (to: 'yara.abdellatif1@vodafone.com,manar.hassan1@vodafone.com,Ahmed.Said-AbdAllah2@vodafone.com',
+//                 		subject: "Jenkins Job Deployment success",
+//                 		body: """
+// Dears,
 
-Kindly be informed that code is containerized and Docker image is ready to be used.
+// Kindly be informed that code is containerized and Docker image is ready to be used.
 			
-Thanks 
-Deployment CoE
-					""");
+// Thanks 
+// Deployment CoE
+// 					""");
 			}
-        failure{
-            	emailext attachLog: true, subject: 'Jenkins job Kubernetes deployment failed', to: 'manar.hassan1@vodafone.com,yara.abdellatif1@vodafone.com,Ahmed.Said-AbdAllah2@vodafone.com', body: """
-Dears,
+//         failure{
+//             	emailext attachLog: true, subject: 'Jenkins job Kubernetes deployment failed', to: 'manar.hassan1@vodafone.com,yara.abdellatif1@vodafone.com,Ahmed.Said-AbdAllah2@vodafone.com', body: """
+// Dears,
 
-Kindly be informed that the job docker build has failed, please find the logs attached to this email.
+// Kindly be informed that the job docker build has failed, please find the logs attached to this email.
 			
-Thanks
-Deployment CoE
-"""
-        	}
+// Thanks
+// Deployment CoE
+// """
+//         	}
         	*/
     	}
     	
