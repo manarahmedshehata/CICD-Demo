@@ -5,8 +5,7 @@ pipeline {
     	
         stage('Java Build') {
         	steps {
-				notifyStarted("Java Build","Kindly be informed that job started successfully")
-				cd nothing
+				notifyStarted("Java Build")
         		echo "java build"
 				sh"""
 					cd ./demo
@@ -16,7 +15,7 @@ pipeline {
 		post
 		{
 		success{
-			notifySuccessful("Java Build","Kindly be informed that code build is done successfully")
+			notifySuccessful("Java Build")
  			}
         failure{
         	notifyFailed("Java Build")
@@ -27,7 +26,7 @@ pipeline {
 	   
         stage('docker Build') {
 		steps {
-			notifyStarted("Docker Build","Kindly be informed that job started successfully")
+			notifyStarted("Docker Build")
 			echo "docker build"	
 			withCredentials([usernamePassword(credentialsId: '18b57317-0966-4f4a-9fa8-49f733bc09bd', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
 				sh """
@@ -46,7 +45,7 @@ pipeline {
 		post
 		{
 		success{
-			notifySuccessful("Docker Build","Kindly be informed that code is containerized and Docker image is ready to be use")
+			notifySuccessful("Docker Build")
 			}
         failure{
         	notifyFailed("Docker Build")
@@ -58,7 +57,7 @@ pipeline {
 
         stage('Deployment') {
 			steps {
-				notifyStarted("Kubernetes Deployment","Kindly be informed that job started successfully")
+				notifyStarted("Kubernetes Deployment")
 				echo "Deployment"	
 				sh """
 					kubectl delete -f ./manifests/deployment.yaml
@@ -72,7 +71,7 @@ pipeline {
         	post
 			{
 			success{
-				notifySuccessful("Kubernetes Deployment","Kindly be informed that Kubernetes deployment is completed and micro service is ready to test")
+				notifySuccessful("Kubernetes Deployment")
 			}
         failure{
         	notifyFailed("Kubernetes Deployment")
@@ -87,40 +86,15 @@ pipeline {
 
 //functions
 
-def notifyStarted(stagename,mailbody) {
+def notifyStarted(stagename) {
   // send to Slack
   slackSend (color: '#FFFF00', message: "STARTED: Job $stagename '[${env.BUILD_NUMBER}]'", channel: 'ci-cd-demo')
-/*
-  // send mail
-  mail (to: 'yara.abdellatif1@vodafone.com,manar.hassan1@vodafone.com,ahmed.said-abdallah2@vodafone.com',
-                		subject: "Jenkins Job ${env.JOB_NAME} $stagename [${env.BUILD_NUMBER}] success",
-                		body: """
-Dears,
-
-$mailbody .
-			
-Thanks
-Deployment CoE
-					"""); 
-*/
 }
 
-def notifySuccessful(stagename,mailbody) {
+def notifySuccessful(stagename) {
   // send to Slack
   slackSend (color: '#00FF00', message: "SUCCESSFUL: Job $stagename '[${env.BUILD_NUMBER}]'", channel: 'ci-cd-demo')
- /*
-  // send mail
-  mail (to: 'yara.abdellatif1@vodafone.com,manar.hassan1@vodafone.com,ahmed.said-abdallah2@vodafone.com',
-                		subject: "Jenkins Job ${env.JOB_NAME} $stagename [${env.BUILD_NUMBER}] success",
-                		body: """
-Dears,
-
-$mailbody .
-			
-Thanks
-Deployment CoE
-					""");
- */
+ 
  }
 
 def notifyFailed(stagename) {
