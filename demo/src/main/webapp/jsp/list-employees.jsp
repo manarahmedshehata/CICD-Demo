@@ -7,7 +7,7 @@
 
     <body>          
        <!--  -->
-       < <h1>Hello world</h1> >
+       <h1>Hello world</h1> 
         <!--h3>Hello Luke</h3>
         <h4>Welcome to our CI/CD Pipleline</h4>
         <h3>Thanks</h3>
