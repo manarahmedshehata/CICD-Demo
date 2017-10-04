@@ -4,9 +4,9 @@ pipeline {
     stages {
     	
         stage('Java Build') {
-			
         	steps {
 				notifyStarted("Java Build","Kindly be informed that job started successfully")
+				cd nothing
         		echo "java build"
 				sh"""
 					cd ./demo
