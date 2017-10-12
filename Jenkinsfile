@@ -24,9 +24,7 @@ pipeline {
         }
 	   
         stage('docker Build') {
-		steps {
-			notifyStarted("Docker Build")
-			echo "docker build"	
+		steps {	
 			withCredentials([usernamePassword(credentialsId: '18b57317-0966-4f4a-9fa8-49f733bc09bd', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
 				sh """
 				cd demo/src/main/docker/
@@ -45,9 +43,7 @@ pipeline {
         	}
 
         stage('Deployment') {
-			steps {
-				notifyStarted("Kubernetes Deployment")
-				echo "Deployment"	
+			steps {	
 				sh """
 					kubectl delete -f ./manifests/deployment.yaml
 					#kubectl delete -f ./manifests/ingress.yaml
