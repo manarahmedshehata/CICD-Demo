@@ -7,7 +7,7 @@ pipeline {
         	steps {
 				sh"""
 					cd ./demo
-					mvn clean package sonar:sonar
+					mvn clean package sonar:sonar -Dsonar.host.url=http://localhost:9000
 				"""
 			        	}
 
