@@ -2,26 +2,28 @@ pipeline {
     agent any
     
     stages {
-    	   
-	stage('Java Build') {
-		steps {
+    	
+        stage('Java Build') {
+        	steps {
 				notifyStarted("Java Build")
+        		echo "java build"
 				sh"""
+					
 					mvn clean package
 				"""
-		 }
-		 post
+			        	}
+		post
 		{
-			success{
-				notifySuccessful("Java Build")
-			}
-			failure{
-				notifyFailed("Java Build")
-			}
-			
-		}
-			   
-	}
+		success{
+			notifySuccessful("Java Build")
+ 			}
+        failure{
+        	notifyFailed("Java Build")
+        	 }
+    	}
+
+        }
+	   
         stage('docker Build') {
 		steps {
 			notifyStarted("Docker Build")
