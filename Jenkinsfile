@@ -7,13 +7,13 @@ pipeline {
         	steps {
 				sh"""
 					cd ./demo
-					mvn clean package 
+					mvn clean package sonar:sonar
 				"""
 			        	}
 
         }
 	    
-	 stage('sonarqube') {
+	/* stage('sonarqube') {
         	steps {
 			
 				sh"""
@@ -22,7 +22,7 @@ pipeline {
 			        	}
 
         }
-	   
+	  */ 
         stage('docker Build') {
 		steps {	
 			withCredentials([usernamePassword(credentialsId: '18b57317-0966-4f4a-9fa8-49f733bc09bd', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
