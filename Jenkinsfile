@@ -8,7 +8,7 @@ pipeline {
 				notifyStarted("Java Build")
         		echo "java build"
 				sh"""
-					
+					cd ./demo
 					mvn clean package
 				"""
 			        	}
