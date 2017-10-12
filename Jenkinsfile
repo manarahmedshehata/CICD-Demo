@@ -2,34 +2,26 @@ pipeline {
     agent any
     
     stages {
-    	
-        stage('sonar analysis') {
-        	steps {
+    	   
+	stage('Java Build') {
+		steps {
 				notifyStarted("Java Build")
-        		echo "java build"
 				sh"""
-					sh "${sonarqubeScannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://localhost:9000/"
+					mvn clean package
 				"""
-			        	}
-		post
+		 }
+		 post
 		{
-		success{
-			notifySuccessful("Java Build")
- 			}
-        failure{
-        	notifyFailed("Java Build")
-        	 }
-    	}
-
-        }
-	   
-	           stage('Java Build') {
-        	steps {
-				sh"""
-					
-				"""
-			        	}
-		   }
+			success{
+				notifySuccessful("Java Build")
+			}
+			failure{
+				notifyFailed("Java Build")
+			}
+			
+		}
+			   
+	}
         stage('docker Build') {
 		steps {
 			notifyStarted("Docker Build")
@@ -116,4 +108,3 @@ Thanks
 Deployment CoE
 """
 }
-def sonarqubeScannerHome = tool name: 'SonarQubeScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
