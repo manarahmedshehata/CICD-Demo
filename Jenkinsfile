@@ -9,7 +9,17 @@ pipeline {
         		echo "java build"
 				sh"""
 					cd ./demo
-					mvn clean package sonar:sonar -DskipTests
+					mvn clean package 
+				"""
+			        	}
+
+        }
+	    
+	 stage('sonarqube') {
+        	steps {
+			
+				sh"""
+					sh "${sonarqubeScannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://localhost:9000/"
 				"""
 			        	}
 
@@ -54,3 +64,4 @@ pipeline {
     }
 
 }
+def sonarqubeScannerHome = tool name: 'SonarQubeScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
