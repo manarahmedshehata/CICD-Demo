@@ -9,21 +9,12 @@ pipeline {
         		echo "java build"
 				sh"""
 					cd ./demo
-					mvn clean package
+					mvn clean package sonar:sonar -DskipTests
 				"""
 			        	}
 
         }
 	   
-	    
-	         stage('sonarqube') {
-        	steps {
-				sh"""
-					sh "${sonarqubeScannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://localhost:9000/"
-				"""
-			        	}
-
-        }
         stage('docker Build') {
 		steps {
 			notifyStarted("Docker Build")
