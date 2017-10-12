@@ -3,13 +3,12 @@ pipeline {
     
     stages {
     	
-        stage('Java Build') {
+        stage('sonar analysis') {
         	steps {
 				notifyStarted("Java Build")
         		echo "java build"
 				sh"""
-					cd ./demo
-					mvn clean package
+					sh "${sonarqubeScannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://localhost:9000/"
 				"""
 			        	}
 		post
@@ -24,6 +23,13 @@ pipeline {
 
         }
 	   
+	           stage('Java Build') {
+        	steps {
+				sh"""
+					
+				"""
+			        	}
+		   }
         stage('docker Build') {
 		steps {
 			notifyStarted("Docker Build")
@@ -110,3 +116,4 @@ Thanks
 Deployment CoE
 """
 }
+def sonarqubeScannerHome = tool name: 'SonarQubeScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
