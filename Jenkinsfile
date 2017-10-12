@@ -7,22 +7,23 @@ pipeline {
         	steps {
 				sh"""
 					cd ./demo
-					mvn clean package sonar:sonar
+					mvn clean package
 				"""
 			        	}
 
         }
 	    
-	/* stage('sonarqube') {
-        	steps {
-			
-				sh"""
-					sh "${sonarqubeScannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://localhost:9000/"
-				"""
-			        	}
+	stage('Sonarqube analysis') {
+	    steps {
+		    script {
+			     scannerHome = tool 'SonarScanner';
+			}
+		     withSonarQubeEnv('SonarQube') {
+			 bat "${scannerHome}/bin/sonar-scanner.bat" 
+		    }
 
+	    }
         }
-	  */ 
         stage('docker Build') {
 		steps {	
 			withCredentials([usernamePassword(credentialsId: '18b57317-0966-4f4a-9fa8-49f733bc09bd', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
