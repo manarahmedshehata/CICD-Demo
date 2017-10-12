@@ -13,17 +13,13 @@ pipeline {
 
         }
 	    
-	stage('Sonarqube analysis') {
-	    steps {
-		    script {
-			     scannerHome = tool 'SonarScanner';
-			}
-		     withSonarQubeEnv('SonarQube') {
-			 bat "${scannerHome}/bin/sonar-scanner.bat" 
-		    }
-
-	    }
-        }
+	  stage('SonarQube analysis') {
+    // requires SonarQube Scanner 2.8+
+    def scannerHome = tool 'SonarQube Scanner 2.8';
+    withSonarQubeEnv('My SonarQube Server') {
+      sh "${scannerHome}/bin/sonar-scanner"
+    }
+  }
         stage('docker Build') {
 		steps {	
 			withCredentials([usernamePassword(credentialsId: '18b57317-0966-4f4a-9fa8-49f733bc09bd', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
