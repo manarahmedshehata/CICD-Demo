@@ -7,20 +7,12 @@ pipeline {
         	steps {
 				sh"""
 					cd ./demo
-					mvn clean package
+					mvn clean package sonar:sonar
 				"""
 			        	}
 
         }
-	    
-  stage('SonarQube analysis') {
-    // requires SonarQube Scanner 2.8+
-	  steps {
-    withSonarQubeEnv('My SonarQube Server') {
-      sh "${scannerHome}/bin/sonar-scanner"
-    }
-	  }
-  }
+
         stage('docker Build') {
 		steps {	
 			withCredentials([usernamePassword(credentialsId: '18b57317-0966-4f4a-9fa8-49f733bc09bd', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
