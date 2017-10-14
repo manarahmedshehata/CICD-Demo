@@ -7,7 +7,7 @@ pipeline {
         	steps {
 				sh"""
 					cd ./demo
-					mvn clean package sonar:sonar
+					mvn clean install -Psonar sonar:sonar
 				"""
 			        	}
 
