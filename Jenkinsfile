@@ -7,7 +7,7 @@ pipeline {
         	steps {
 				sh"""
 					cd ./demo
-					mvn clean install -Psonar sonar:sonar
+					mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
 				"""
 			        	}
 
