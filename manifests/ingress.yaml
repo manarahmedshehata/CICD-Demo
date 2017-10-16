@@ -12,6 +12,6 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: cicd-demo
-          servicePort: 7070
+          serviceName: cicd-demo-sonar
+          servicePort: 7071
         path: /demo/*
