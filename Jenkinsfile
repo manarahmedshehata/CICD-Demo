@@ -7,7 +7,7 @@ pipeline {
         	steps {
 				sh"""
 					cd ./demo
-					mvn clean package sonar:sonar
+					mvn clean package -e org.sonarsource.scanner.maven:sonar-maven-plugin:RELEASE:sonar
 				"""
 			        	}
 
