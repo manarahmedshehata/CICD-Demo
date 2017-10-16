@@ -48,4 +48,3 @@ pipeline {
     }
 
 }
-    def scannerHome = tool 'SonarQube Scanner 2.8';
