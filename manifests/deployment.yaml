@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: cicd-demo
+  name: cicd-demo-sonar
   namespace: cicd-test
   labels:
     app: cicd-demo
