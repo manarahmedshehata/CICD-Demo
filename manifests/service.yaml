@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: cicd-demo
+  name: cicd-demo-sonar
   namespace: cicd-test
 spec:
   type: NodePort
@@ -9,5 +9,5 @@ spec:
     app: cicd-demo
   ports:
   - name: cicd-demo-port
-    port: 7070
+    port: 7071
     targetPort: 8080
