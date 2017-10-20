@@ -11,6 +11,6 @@
         <h3>Hello Ahmed Said </h3>
         <h4>Welcome to our CI/CD Pipleline</h4>
         <h3>Thanks</h3>
-        <h3>Deployment CoE V1.0</h3> 
+        <h3>Deployment CoE V1.1</h3> 
     </body>
 </html>
