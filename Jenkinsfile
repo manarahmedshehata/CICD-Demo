@@ -2,7 +2,13 @@ pipeline {
     agent any
     
     stages {
-    	
+	    stage('Build') {
+		    steps {
+			    echo "test"
+			    echo  ${env.GIT_COMMIT}
+		    }
+	    }
+    	/*
         stage('Java Build') {
         	steps {
 				notifyStarted("Java Build")
@@ -79,6 +85,7 @@ pipeline {
     	}
     	
         }
+	*/
     }
 
 }
